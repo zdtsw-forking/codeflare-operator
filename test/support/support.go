@@ -30,9 +30,10 @@ import (
 var (
 	ApplyOptions = metav1.ApplyOptions{FieldManager: "codeflare-test", Force: true}
 
-	TestTimeoutShort  = 1 * time.Minute
-	TestTimeoutMedium = 2 * time.Minute
-	TestTimeoutLong   = 5 * time.Minute
+	TestTimeoutShort           = 1 * time.Minute
+	TestTimeoutMedium          = 2 * time.Minute
+	TestTimeoutLong            = 5 * time.Minute
+	TestTimeoutGpuProvisioning = 30 * time.Minute
 )
 
 func init() {
@@ -55,6 +56,13 @@ func init() {
 			TestTimeoutLong = duration
 		} else {
 			fmt.Printf("Error parsing CODEFLARE_TEST_TIMEOUT_LONG. Using default value: %s", TestTimeoutLong)
+		}
+	}
+	if value, ok := os.LookupEnv("CODEFLARE_TEST_TIMEOUT_GPU_PROVISIONING"); ok {
+		if duration, err := time.ParseDuration(value); err == nil {
+			TestTimeoutGpuProvisioning = duration
+		} else {
+			fmt.Printf("Error parsing CODEFLARE_TEST_TIMEOUT_GPU_PROVISIONING. Using default value: %s", TestTimeoutGpuProvisioning)
 		}
 	}
 

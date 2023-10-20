@@ -37,6 +37,22 @@ on:
         default: 'redhat-openshift-ecosystem'
 
 jobs:
+  release-parameters:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Release Parameters
+      run: |
+        echo "Below are the release parameters set for the workflow:"
+        echo "Operator Version: ${{ github.event.inputs.operator-version }}"
+        echo "Replaces: ${{ github.event.inputs.replaces }}"
+        echo "MCAD Version: ${{ github.event.inputs.mcad-version }}"
+        echo "CodeFlare SDK Version: ${{ github.event.inputs.codeflare-sdk-version }}"
+        echo "InstaScale Version: ${{ github.event.inputs.instascale-version }}"
+        echo "Is Stable: ${{ github.event.inputs.is-stable }}"
+        echo "CodeFlare Repository Organization: ${{ github.event.inputs.codeflare-repository-organization }}"
+        echo "Quay Organization: ${{ github.event.inputs.quay-organization }}"
+        echo "Community Operators Prod Organization: ${{ github.event.inputs.community-operators-prod-organization }}"
+
   release-mcad:
     runs-on: ubuntu-latest
 
@@ -51,7 +67,7 @@ jobs:
 
     - name: Release MCAD
       run: |
-        gh workflow run mcad-release.yml --repo ${{ github.event.inputs.codeflare-repository-organization }}/multi-cluster-app-dispatcher --ref ${{ github.ref }} --field tag=${{ github.event.inputs.mcad-version }} --field quay-organization=${{ github.event.inputs.quay-organization }}
+        gh workflow run mcad-release.yml --repo ${{ github.event.inputs.codeflare-repository-organization }}/multi-cluster-app-dispatcher --ref ${{ github.ref }} --field tag=${{ github.event.inputs.mcad-version }}
       env:
         GITHUB_TOKEN: ${{ secrets.CODEFLARE_MACHINE_ACCOUNT_TOKEN }}
       shell: bash
@@ -83,7 +99,7 @@ jobs:
 
     - name: Release InstaScale
       run: |
-        gh workflow run instascale-release.yml --repo ${{ github.event.inputs.codeflare-repository-organization }}/instascale --ref ${{ github.ref }} --field is-stable=${{ github.event.inputs.is-stable }} --field tag=${{ github.event.inputs.instascale-version }} --field mcad-version=${{ github.event.inputs.mcad-version }} --field quay-organization=${{ github.event.inputs.quay-organization }}
+        gh workflow run instascale-release.yml --repo ${{ github.event.inputs.codeflare-repository-organization }}/instascale --ref ${{ github.ref }} --field tag=${{ github.event.inputs.instascale-version }} --field mcad-version=${{ github.event.inputs.mcad-version }}
       env:
         GITHUB_TOKEN: ${{ secrets.CODEFLARE_MACHINE_ACCOUNT_TOKEN }}
       shell: bash

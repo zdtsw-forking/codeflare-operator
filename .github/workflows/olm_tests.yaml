@@ -19,10 +19,10 @@ concurrency:
 
 jobs:
   kubernetes-olm-upgrade:
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-20.04-4core
     timeout-minutes: 60
     env:
-      OLM_VERSION: v0.24.0
+      OLM_VERSION: v0.25.0
       VERSION: "v0.0.0-ghaction"  # Need to supply some semver version for bundle to be properly generated
       CATALOG_BASE_IMG: "registry.access.redhat.com/redhat/community-operator-index:v4.13"
       CODEFLARE_TEST_TIMEOUT_SHORT: "1m"
@@ -30,25 +30,6 @@ jobs:
       CODEFLARE_TEST_TIMEOUT_LONG: "10m"
 
     steps:
-      - name: Cleanup
-        run: |
-          ls -lart
-          echo "Initial status:"
-          df -h
-
-          echo "Cleaning up resources:"
-          sudo swapoff -a
-          sudo rm -f /swapfile
-          sudo apt clean
-          sudo rm -rf /usr/share/dotnet
-          sudo rm -rf /opt/ghc
-          sudo rm -rf "/usr/local/share/boost"
-          sudo rm -rf "$AGENT_TOOLSDIRECTORY"
-          docker rmi $(docker image ls -aq)
-
-          echo "Final status:"
-          df -h
-
       - uses: actions/checkout@v3
         with:
           fetch-depth: 0  # fetching also previous commits to get tags

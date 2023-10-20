@@ -8,10 +8,10 @@ CodeFlare Stack Compatibility Matrix
 
 | Component                    | Version                                                                                           |
 |------------------------------|---------------------------------------------------------------------------------------------------|
-| CodeFlare Operator           | [v1.0.0-rc.1](https://github.com/project-codeflare/codeflare-operator/releases/tag/v1.0.0-rc.1)             |
-| Multi-Cluster App Dispatcher | [v1.35.0](https://github.com/project-codeflare/multi-cluster-app-dispatcher/releases/tag/v1.35.0) |
-| CodeFlare-SDK                | [v0.8.0](https://github.com/project-codeflare/codeflare-sdk/releases/tag/v0.8.0)                  |
-| InstaScale                   | [v0.0.9](https://github.com/project-codeflare/instascale/releases/tag/v0.0.9)                     |
+| CodeFlare Operator           | [v1.0.0-rc.3](https://github.com/project-codeflare/codeflare-operator/releases/tag/v1.0.0-rc.3)             |
+| Multi-Cluster App Dispatcher | [v1.37.0](https://github.com/project-codeflare/multi-cluster-app-dispatcher/releases/tag/v1.37.0) |
+| CodeFlare-SDK                | [v0.10.0](https://github.com/project-codeflare/codeflare-sdk/releases/tag/v0.10.0)                  |
+| InstaScale                   | [v0.2.0](https://github.com/project-codeflare/instascale/releases/tag/v0.2.0)                     |
 | KubeRay                      | [v0.5.0](https://github.com/ray-project/kuberay/releases/tag/v0.5.0)                              |
 <!-- Compatibility Matrix end -->
 
