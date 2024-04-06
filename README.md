@@ -8,11 +8,11 @@ CodeFlare Stack Compatibility Matrix
 
 | Component                    | Version                                                                                           |
 |------------------------------|---------------------------------------------------------------------------------------------------|
-| CodeFlare Operator           | [v1.2.0](https://github.com/project-codeflare/codeflare-operator/releases/tag/v1.2.0)             |
+| CodeFlare Operator           | [v1.3.0](https://github.com/project-codeflare/codeflare-operator/releases/tag/v1.3.0)             |
 | Multi-Cluster App Dispatcher | [v1.40.0](https://github.com/project-codeflare/multi-cluster-app-dispatcher/releases/tag/v1.40.0) |
-| CodeFlare-SDK                | [v0.14.0](https://github.com/project-codeflare/codeflare-sdk/releases/tag/v0.14.0)                  |
+| CodeFlare-SDK                | [v0.15.0](https://github.com/project-codeflare/codeflare-sdk/releases/tag/v0.15.0)                  |
 | InstaScale                   | [v0.4.0](https://github.com/project-codeflare/instascale/releases/tag/v0.4.0)                     |
-| KubeRay                      | [v1.0.0](https://github.com/opendatahub-io/kuberay/releases/tag/v1.0.0)                              |
+| KubeRay                      | [v1.1.0](https://github.com/opendatahub-io/kuberay/releases/tag/v1.1.0)                              |
 <!-- Compatibility Matrix end -->
 
 ## Development
@@ -108,9 +108,10 @@ For ODH tests additional environment variables are needed:
 3. Verify that opened pull request to [OpenShift community operators repository](https://github.com/redhat-openshift-ecosystem/community-operators-prod) has proper content.
 4. Once PR is merged, announce the new release in slack and mail lists, if any.
 5. Release automation should open a PR with changes in [ODH CodeFlare operator repo](https://github.com/opendatahub-io/codeflare-operator). Review the changes proposed by automation. If all the changes are correct then manually cherrypick all `CARRY` and `PATCH` commits from the current main branch, push the result to a dedicated branch and ask on Slack channel for review of the result branch content. Once agreed then push the changes directly to the `main` branch (branch protection has to be temporarily disabled).
-6. Create a release branch on [Red Hat CodeFlare operator repo](https://github.com/red-hat-data-services/codeflare-operator) for the next release if it doesn't exist yet.
-7. Create a dedicated branch containing changes from [ODH CodeFlare operator repo](https://github.com/opendatahub-io/codeflare-operator). Cherrypick all relevant changes available in [Red Hat CodeFlare operator repo](https://github.com/red-hat-data-services/codeflare-operator) latest release branch which should be available also in the next release. Ask on Slack channel for review of the result branch content. Once agreed then push the changes directly to the release branch.
-8. Make sure that release automation created a PR updating CodeFlare SDK version in [ODH Notebooks repository](https://github.com/opendatahub-io/notebooks). Make sure the PR gets merged.
+6. Build ODH/CFO image by triggering [Build and Push action](https://github.com/opendatahub-io/codeflare-operator/actions/workflows/build-and-push.yaml)
+7. Create a release branch on [Red Hat CodeFlare operator repo](https://github.com/red-hat-data-services/codeflare-operator) for the next release if it doesn't exist yet.
+8. Create a dedicated branch containing changes from [ODH CodeFlare operator repo](https://github.com/opendatahub-io/codeflare-operator). Cherrypick all relevant changes available in [Red Hat CodeFlare operator repo](https://github.com/red-hat-data-services/codeflare-operator) latest release branch which should be available also in the next release. Ask on Slack channel for review of the result branch content. Once agreed then push the changes directly to the release branch.
+9. Make sure that release automation created a PR updating CodeFlare SDK version in [ODH Notebooks repository](https://github.com/opendatahub-io/notebooks). Make sure the PR gets merged.
 
 ### Releases involving part of the stack
 

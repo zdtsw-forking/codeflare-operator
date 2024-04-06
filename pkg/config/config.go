@@ -17,9 +17,6 @@ limitations under the License.
 package config
 
 import (
-	instascale "github.com/project-codeflare/instascale/pkg/config"
-	mcad "github.com/project-codeflare/multi-cluster-app-dispatcher/pkg/config"
-
 	configv1alpha1 "k8s.io/component-base/config/v1alpha1"
 )
 
@@ -31,21 +28,11 @@ type CodeFlareOperatorConfiguration struct {
 	// ControllerManager returns the configurations for controllers
 	ControllerManager `json:",inline"`
 
-	// The MCAD controller configuration
-	MCAD *mcad.MCADConfiguration `json:"mcad,omitempty"`
-
-	// The InstaScale controller configuration
-	InstaScale *InstaScaleConfiguration `json:"instascale,omitempty"`
+	KubeRay *KubeRayConfiguration `json:"kuberay,omitempty"`
 }
 
-type InstaScaleConfiguration struct {
-	// enabled controls whether the InstaScale controller is started.
-	// It may default to true on platforms that InstaScale supports.
-	// Otherwise, it defaults to false.
-	Enabled *bool `json:"enabled,omitempty"`
-
-	// The InstaScale controller configuration
-	instascale.InstaScaleConfiguration `json:",inline,omitempty"`
+type KubeRayConfiguration struct {
+	RayDashboardOAuthEnabled *bool `json:"rayDashboardOAuthEnabled,omitempty"`
 }
 
 type ControllerManager struct {
